@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+  <title>Login or Register</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Log-in</h1>
+  {% if form.errors %}
+    <p>Your username and password did not match.</p>
+  {% else %}
+    <p>Please use the following form to log-in:</p>
+  {% endif %}
+
+  <div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+      {{ form|crispy }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}"><!-- this variable is first set by the login view when you pass a 'next' parameter in the request (ex: http://127.0.0.1:8000/account/login/?next=/account/). The 'next' parameter has to be a url. If this parameter is given, the django login view will redirect the user to the give url after a succesful login.-->
+      <input type="submit"  name="" value="Log-in">
+    </form>
+    <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+  </div>
+{% endblock %}

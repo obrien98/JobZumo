@@ -1,0 +1,15 @@
+#posts{
+  flex-wrap: wrap;
+}
+#posts>*{
+  flex-basis: 30%;
+}
+.post{
+  height: 300px;
+}
+.card-title{
+  margin-bottom: 0;
+}
+.test{
+  margin-bottom: 100px;
+}

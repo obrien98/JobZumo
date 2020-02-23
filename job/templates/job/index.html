@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+<!--  <link rel="stylesheet" href="{% static 'job/index.css' %}"> -->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
+.bold-roboto{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+}
+.form-inline> .form-control{
+  width: 35%;
+}
+.form-inline> button{
+  width: 15%;
+}
+.card{
+  flex-basis: 80%;
+}
+#temp_message{
+  border: 1px solid var(--silver);
+  border-radius: 50px;
+  padding: 20px;
+  letter-spacing: .8px;
+  background-color: #7FDBFF;
+}
+.letter-spacing-1px{
+  letter-spacing:1px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class='row'>
+  <h6 id="temp_message" class="col-8 offset-2 col-md-6 offset-md-3 mb-4 text-center font-weight-bold" >
+    Post a job for free in Westchester/Putnam county.
+  </h6>
+</div>
+
+   <!-- job searh form -->
+   <div id="job-search">
+     <h2 class = 'text-center bold-roboto letter-spacing-1px'>Search for Jobs</h2>
+     <form action="{% url 'search_results' %}" method="GET">
+       <div class="form-group row justify-content-center mb-4">
+         <input class='col-6 col-sm-6 col-md-6 col-lg-5 form-control form-control-lg mr-4' name = 'query' type = 'text' placeholder="Zip Code" />
+         <input class='col-3 col-sm-2 col-md-2 col-lg-2 form-control form-control-lg mr-4 background-primary' style='color: white;'   type = 'submit'  />
+       </div>
+     </form>
+   </div>
+   <p class='text-center mb-4 font-weight-bold' style='font-size:18px;'>The only place on the web dedicated to filling minimum wage positions.</p>
+   <div class="row">
+           <h3 class= 'col-12 text-center bold-roboto letter-spacing-1px'>About Us</h3>
+           <p class='col-10 offset-1' style='letter-spacing: .8px;' >If the "now hiring" sign isn't working, we can help. JobZumo was born after a "now hiring delivery driver" sign haning in the window of a small town Westchester restaurant failed to attract attention...for two months. After launching this site, posting the job and doing some local social media marketing, multiple local high school and college students had contacted about the job.</p>
+
+           <div class="col-12 text-center ">
+             <a href = '#' class='col-6 btn btn-lg mt-4 background-primary color-white'>Post a Job for Free</a>
+
+           </div>
+   </div>
+
+
+
+
+
+{% endblock %}

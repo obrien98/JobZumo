@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+  <h1 class = 'text-center'>Add Business</h1>
+  {% if form.errors %}
+    <p>Error</p>
+  {% else %}
+    <p class = 'col-10 offset-1 text-center'>Now you just need to add your business and you'll be able to post your openings. Don't worry, you only have to do this once.</p>
+  {% endif %}
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <form action="{% url 'business_registration' %}" method="post">
+          {{ form|crispy }}
+          {% csrf_token %}
+          <small class="form-text text-muted">Include best way to conctact you, if other than phone number listed.</small>
+          <div class='text-center mt-4'>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div class="fieldWrapper">
+          {{ form.title.errors }}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+  <h1 class = 'text-center'>Edit Job</h1>
+  {% if form.errors %}
+    <p>Error</p>
+  {% else %}
+    <p class = 'text-center'>Please use the following form to edit a job:</p>
+  {% endif %}
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <form action="{% url 'post_job' %}" method="post">
+          {{ form|crispy }}
+          {% csrf_token %}
+          <small class="form-text text-muted">Include best way to conctact you, if other than phone number listed.</small>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="fieldWrapper">
+          {{ form.title.errors }}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

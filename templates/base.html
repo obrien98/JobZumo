@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <!-- Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices
+  first and then scale up components as necessary using CSS media queries. To ensure
+  proper rendering and touch zooming for all devices, add the repsonsive viewport meta tag: -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- Things to note about bootstrap:
+      - Sets global box-sizing to border-box.
+      - For improved cross-browser rendering, we use Reboot to correct
+        inconsistencies across browsers and devices while providing slightly
+        more opinionated resets to common HTML elements.
+      -
+
+-->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+/* color declaration and general classes for use in all pages */
+:root{
+--primary-color: #3500D3;
+--heading-color: #525252;
+--paragraph-color: #888888;
+--silver: #DDDDDD;
+--blue: #0074D9;
+--red: #FF4136;
+--gray: #AAAAAA;
+--navy: #001f3f;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+}
+p{
+  font-size: 1rem;
+}
+.background-primary{
+  background-color: var(--primary-color);
+}
+.color-primary{
+  color: var(--primary-color);
+}
+.color-white{
+  color: white;
+}
+
+
+
+/* styles specific to elements part of base.html */
+.navbar{
+  border-bottom: 1px solid silver;
+
+}
+.navbar-brand,
+#btn-toggler-icon,
+.navbar-toggler-icon,
+.nav-link{
+  color: var(--primary-color);
+}
+#footer{
+  background-color: var(--secondary-color);
+  color: yellow;
+
+}
+</style>
+   {% block head %}
+
+   {% endblock %}
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class= 'navbar navbar-expand-md sticky-top mb-4'>
+    <a class="navbar-brand" href='{% url 'index'%}'>JobZumo</a>
+    <button class='navbar-toggler' type="button"  data-toggle = 'collapse' data-target="#navbar-responsive">
+      <span id = 'btn-toggler-icon' class="fa fa-bars"></span>
+
+
+    </button>
+    <div class="collapse navbar-collapse" id = 'navbar-responsive'>
+      <ul class = 'navbar-nav ml-auto'>
+        {% if request.user.is_authenticated %} <!-- change navbar depending on whether user is logged in or not -->
+        <li class= 'nav-item' {% if section == 'people' %} class = 'selected' {% endif %}>
+          <a class = 'nav-link' href="{% url 'post_job' %}" >Post A Job</a>
+        </li>
+        <li class="nav-item" {% if section == 'dashboard' %} class='selected' {% endif %}>
+          <a class = 'nav-link' href="{% url 'dashboard' %}">My Dashboard</a>
+        </li>
+        <li class= 'nav-item' {% if section == 'people' %} class = 'selected' {% endif %}>
+          <a class = 'nav-link' href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class= 'nav-item'>
+          <a class = 'nav-link' href="{% url 'signup' %}" >Employer Sign Up</a>
+        </li>
+        <li class= 'nav-item'>
+          <a class = 'nav-link' href="{% url 'login' %}" >Login</a>
+        </li>
+      </ul>
+    </div>
+      {% endif %}
+  </nav>
+  <div class="container-fluid">
+
+
+
+
+  {% block content %}
+    <!-- content goes here -->
+  {% endblock %}
+
+
+  </div> <!-- close bootstrap container-->
+  <div id='footer' class="container fixed-bottom" style='max-height: 200px; '  >
+    <hr />
+    <div class="row">
+      <div class=" col-12 text-center " >
+        <p>JobZumo.com </p>
+      </div>
+    </div>
+  </div>
+  <!-- Optional Bootstrap JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

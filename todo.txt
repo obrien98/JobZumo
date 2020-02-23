@@ -1,0 +1,32 @@
+ * Job Model
+   - foreign key to business
+   - job title
+   - job description
+   - Do I want separate model for businesses? Connect this to user?
+
+* Business Model
+  - Foreign key to user (Do I want one user to be able to create multiple businesses? )
+  -  Name of Business
+  - Address
+  - Zip
+  - State
+  - Phone Number
+  - Email
+
+Views:
+ * Index
+    - See jobs/filter jobs
+ * User sign up
+    - User registers a business here?
+ * Log in
+  -  redirect to job dashboard resented with
+ * dashboard (for logged in business owners)
+  - See your current jobs/post a job
+
+Forms:
+  - Sign up
+  - Login
+  - Post Job
+  - Edit Job
+  - Add Business
+  - Edit Business

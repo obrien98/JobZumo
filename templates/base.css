@@ -1,0 +1,156 @@
+
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+  :root{
+  --primary-color: #0074D9;
+  --heading-color: #525252;
+  --paragraph-color: #888888;
+  --silver: #DDDDDD;
+  --blue: #0074D9;
+  --red: #FF4136;
+  --gray: #AAAAAA;
+  --navy: #001f3f;
+  }
+
+  *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+  body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  }
+  /* Set color of headings */
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6{
+  color: var(--heading-color);
+  }
+
+  /* Set color of paragraphs */
+  p{
+  color: var(--paragraph-color);
+  }
+
+
+
+
+  /* NAVBAR */
+
+  .navbar {
+    background-color: var(--primary-color);
+    border: 1px solid #a2a2a2;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 50px;
+
+
+    /* Web kit stuff not in alphabetical order */
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  #logo {
+    font-size: 1.45em;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #logo-link{
+    color: white;
+
+  }
+  #logo-link, .navbar-item {
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .navbar-item {
+    font-size: .99em;
+  }
+  .navbar-item:hover {
+  }
+
+  .navbar-link{
+    color: white;
+    text-decoration: none;
+  }
+  .navbar-link:hover{
+    color: #718daa;
+  }
+
+
+  .main-nav {
+    margin-top: 5px;
+
+  }
+
+
+  /* =================================
+    Media Queries
+  ==================================== */
+
+
+
+
+  @media (min-width: 769px) {
+    .navbar {
+      display: flex;
+    }
+    .navbar {
+      align-items: center;
+      flex-direction: column;
+        .navbar{
+      width: 80%;
+      margin: 0 auto;
+      max-width: 1150px;
+    }
+    }
+
+  }
+
+  @media (min-width: 1025px) {
+    .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+  }
+  /* END NAVBAR*/
+
+
+
+
+  footer{
+   background-color: var(--primary-color);
+   color: white;
+   padding: 30px;
+
+  }
+
+
+  .selected{
+      background-color: blue;
+    }
+    .center-text{
+      text-align: center;
+    }

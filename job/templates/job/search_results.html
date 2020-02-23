@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<!-- job searh form -->
+<div id="job-search">
+  <h2 class = 'text-center'>Search for Job</h2>
+  <form action="{% url 'search_results' %}" method="GET">
+    <div class="form-group row justify-content-center mb-4">
+      <input class='col-6 col-sm-6 col-md-6 col-lg-5 form-control form-control-lg mr-4' name = 'query' type = 'text' placeholder="Zip Code" />
+      <input class='col-3 col-sm-2 col-md-2 col-lg-2 form-control form-control-lg mr-4 background-primary color-white'  type = 'submit'  />
+    </div>
+  </form>
+</div>
+    <div class = 'ml-md-4' id= 'search-results'> <!-- margin appears on md and up -->
+      <h5>{{ jobs|length }} results for {{query}} <small>(Within 15 miles)</small></h5>
+      <div class ='row'>
+      <!-- searh results -->
+      {% for job in jobs %}
+       <div class="card col-12 col-md-6 p-4">
+         <h5 class = 'job-title'>{{ job.title }} - {{ job.business.name }}</h2>
+         <h6 class = 'establishment-name '>{{ job.business.address }}, {{ job.business.city }}, {{ job.business.state }} </h3>
+         <h6 class = 'establishment-phone-number'>{{ job.business.phone_number }}</h3>
+         <p class ='job-description lead'>{{ job.description }}</p>
+       </div>
+       <div class="col-md-1"></div>
+       {% if forloop.counter == 1 %}
+         <div id="email-subscription" class='col-12 col-md-4 pt-4 card sticky'>
+           <p class='lead' id = 'email-subscription-p'>Be the first to hear about new jobs in Peekskill</p>
+           <form action="{% url 'email_subscription' %}" method="post">
+             <div class="form-inline justify-content-left mb-4">
+               <input class='form-control mr-2 mt-3' type = 'text' placeholder="Email"/>
+               <button class='btn btn-primary mt-3' type="submit" name="button">Submit</button>
+             </div>
+           </form>
+         </div>
+         {% else %}
+         <div class="col-md-4">
+
+         </div>
+
+       {% endif %}
+
+      {% endfor %}
+     </div>
+    </div>
+
+
+
+
+
+{% endblock %}
